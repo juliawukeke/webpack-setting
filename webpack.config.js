@@ -1,4 +1,5 @@
 const path = require("path");
+const svgToMiniDataURI = require("mini-svg-data-uri");
 
 module.exports = {
   entry: "./src/index.js",
@@ -13,6 +14,10 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
         test: /\.(png|jpg|jpeg|gif)$/i,
         type: "asset/resource",
         generator: {
@@ -22,6 +27,16 @@ module.exports = {
       {
         test: /\.svg/,
         type: "asset/inline",
+        generator: {
+          dataUrl: (content) => {
+            content = content.toString();
+            return svgToMiniDataURI(content);
+          },
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
     ],
   },
