@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="100px" viewBox="0 0 375 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Mbg_375</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="375" height="100"></rect>
+    </defs>
+    <g id="第二階段_US1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="分享物件頁面" transform="translate(0.000000, -124.000000)">
+            <g id="Mbg_375" transform="translate(0.000000, 124.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#405DDD" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <circle id="橢圓形" fill="#36499F" fill-rule="nonzero" mask="url(#mask-2)" cx="187.5" cy="-15.5" r="187.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
