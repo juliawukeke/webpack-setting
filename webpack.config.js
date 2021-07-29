@@ -2,13 +2,18 @@ const path = require("path");
 const svgToMiniDataURI = require("mini-svg-data-uri");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    print: "./src/print.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [
@@ -40,6 +45,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "content/font/[name][ext]",
+        },
       },
     ],
   },
@@ -50,6 +58,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "content/css/[name].[hash].css",
     }),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
+    new WebpackManifestPlugin({}),
   ],
 };
