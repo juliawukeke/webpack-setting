@@ -1,5 +1,8 @@
 const path = require("path");
 const svgToMiniDataURI = require("mini-svg-data-uri");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -11,11 +14,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/i,
@@ -40,4 +43,13 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: "body",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "content/css/[name].[hash].css",
+    }),
+    new CleanWebpackPlugin(),
+  ],
 };
